@@ -9,6 +9,7 @@ class simple_timer:
     def __init__(self, name='Timer'):
         # happy birthday
         self.begin = time.time()
+        self.lastclick = time.time()
         # name myself
         self.name = name
         # set empty threads for alarmers
@@ -30,6 +31,7 @@ class simple_timer:
         # refresh threads and reset birthday
         self.refresh_threads()
         self.begin = time.time()
+        self.lastclick = time.time()
 
     def start(self):
         # false start function ^_^
@@ -52,6 +54,13 @@ class simple_timer:
               % (delay, todo))
 
     def click(self, message='passed.'):
-        # report current time on click
+        # report time passed from lastclick
         print('[%s click]' % self.name)
+        print('\t%0.2f seconds %s' % (time.time() - self.lastclick, message))
+        # refresh lastclick
+        self.lastclick = time.time()
+
+    def total(self, message='passed.'):
+        # report total time passed
+        print('[%s total]' % self.name)
         print('\t%0.2f seconds %s' % (time.time() - self.begin, message))

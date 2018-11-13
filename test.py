@@ -14,3 +14,11 @@ if __name__ == '__main__':
     st.alarm_after(5, '5 seconds alarm')
     time.sleep(3)
     st.status()
+
+    time.sleep(10)
+    print('renew')
+    st.total()
+    st.click()
+    time.sleep(1)
+    st.total()
+    st.click()
